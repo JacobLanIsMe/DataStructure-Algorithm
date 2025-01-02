@@ -1,5 +1,6 @@
 // O(n log n)
-
+// If the index of parent node is x, the index of its child nodes are 2x + 1 and 2x + 2.
+// If the index of child node is x, the index of its parent node is Math.floor((x - 1) / 2).
 
 let heapSize;
 let arr = [15, 3, 17, -17, 3.14145, 18, 20, 2, 1, 666];
