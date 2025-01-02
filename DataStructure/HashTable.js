@@ -17,14 +17,29 @@ class HashTable {
             this.table.push([]);
         }
     }
+    // parse string to int
+    parse(str) {
+        let result = 0;
+        for (let i = 0; i < str.length; i++) {
+            result += str.charCodeAt(i);
+        }
+        return result % this.size;
+    }
     // Division Method
     divisionMethod(key) {
         return k % this.size;
     }
     // Multiplication Method
     multiplicationMethod(key) {
+        let parsedKey = 0;
+        if (typeof key !== "number") {
+            parsedKey = this.parse(key);
+        }
+        else{
+            parsedKey = key;
+        }
         let a = (Math.sqrt(5) - 1) / 2;
-        return Math.floor(this.size * ((key * a) % 1));
+        return Math.floor(this.size * ((parsedKey * a) % 1));
     }
 
     set(key, value) {
@@ -48,11 +63,13 @@ class HashTable {
 }
 
 let myHashTable = new HashTable(6);
-myHashTable.set(11424, "Mike");
-myHashTable.set(6254, "James");
-myHashTable.set(4171, "Drake");
-myHashTable.set(554, "Kevin");
-
+// myHashTable.set(11424, "Mike");
+// myHashTable.set(6254, "James");
+// myHashTable.set(4171, "Drake");
+// myHashTable.set(554, "Kevin");
+myHashTable.set("white", "#FFFFFF");
+myHashTable.set("magenta", "#FF00FF");
+myHashTable.set("red", "#FF0000");
 myHashTable.printAll();
 
-console.log(myHashTable.get(500));
+console.log(myHashTable.get("white"));
